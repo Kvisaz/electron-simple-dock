@@ -1,11 +1,25 @@
 {
   "version": "0.0.0",
   "productName": "Electron Dock",
-  "appId": "Kvisaz.App",
+  "name": "sample-app",
+  "build": {
+    "appId": "com.kvisaz.app",
+    "copyright": "Copyright © 2020 Kvisaz",
+    "directories": {
+      "output": "build"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "dir"
+        }
+      ]
+    }
+  },
   "scripts": {
     "start": "electron-webpack dev",
     "make": "electron-webpack",
-    "build": "yarn compile && electron-builder",
+    "build": "yarn make && electron-builder",
     "build:dir": "yarn build --dir -c.compression=store -c.mac.identity=null"
   },
   "devDependencies": {
