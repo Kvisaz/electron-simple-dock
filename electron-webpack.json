@@ -1,0 +1,12 @@
+{
+  "commonSourceDirectory": "src/common",
+  "staticSourceDirectory": "src/assets",
+  "title": true,
+  "main": {
+    "sourceDirectory": "src/main"
+  },
+  "renderer": {
+    "sourceDirectory": "src/renderer",
+    "template": "index.html"
+  }
+}
