@@ -29,6 +29,7 @@
     "webpack": "^4.42.1"
   },
   "dependencies": {
+    "electron-is-dev": "^1.2.0",
     "html-loader": "^1.0.0-alpha.0"
   }
 }

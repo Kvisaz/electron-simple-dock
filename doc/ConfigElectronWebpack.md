@@ -1,5 +1,7 @@
 #Configuration JSON
 
+https://webpack.electron.build/configuration
+
 Configurations can be applied 
 - in package.json at electronWebpack OR 
 - in a separate `electron-webpack.(json|json5|yml)`. 
