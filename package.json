@@ -26,10 +26,10 @@
     "electron": "^8.2.0",
     "electron-builder": "^22.4.1",
     "electron-webpack": "^2.7.4",
+    "html-loader": "^1.1.0",
     "webpack": "^4.42.1"
   },
   "dependencies": {
-    "electron-is-dev": "^1.2.0",
-    "html-loader": "^1.0.0-alpha.0"
+    "electron-is-dev": "^1.2.0"
   }
 }
