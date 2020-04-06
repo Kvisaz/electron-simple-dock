@@ -3,7 +3,8 @@
   "staticSourceDirectory": "src/assets",
   "title": true,
   "main": {
-    "sourceDirectory": "src/main"
+    "sourceDirectory": "src/main",
+    "extraEntries": ["@/preload.js"]
   },
   "renderer": {
     "sourceDirectory": "src/renderer",

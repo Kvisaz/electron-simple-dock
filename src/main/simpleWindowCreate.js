@@ -1,11 +1,17 @@
-import {BrowserWindow} from "electron";
+import {app, BrowserWindow} from "electron";
 import {format as formatUrl} from "url";
 import path from "path";
 
 const isDev = require('electron-is-dev')
 
 export function createMainWindow(onClosed) {
-    const window = new BrowserWindow({webPreferences: {nodeIntegration: true}})
+    const window = new BrowserWindow({
+            webPreferences: {
+                nodeIntegration: true,
+                preload: path.join(app.getAppPath(), 'preload.js')
+            }
+        }
+    )
 
     if (isDev) {
         window.webContents.openDevTools()
@@ -22,7 +28,7 @@ export function createMainWindow(onClosed) {
     }
 
     window.on('closed', () => {
-        if(onClosed) onClosed();
+        if (onClosed) onClosed();
     })
 
     window.webContents.on('devtools-opened', () => {
