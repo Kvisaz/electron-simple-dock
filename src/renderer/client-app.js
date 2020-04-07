@@ -1,11 +1,9 @@
-
-console.log('Renderer say Hello')
-console.log(`constants from preloader`, window.isDev);
-console.log(`appPathe from preloader`, window.appPath);
-console.log(`rendererPath from preloader`, window.rendererPath);
-
-
 import {ClientIPC as IPC} from './client-ipc';
+
+window.addEventListener('load', ()=>{
+    IPC.init()
+        .then(()=> console.log('IPC initialized...'))
+})
 
 let output = document.querySelector('#output')
 

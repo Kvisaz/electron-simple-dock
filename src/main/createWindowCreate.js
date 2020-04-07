@@ -4,11 +4,23 @@ import path from "path";
 
 const isDev = require('electron-is-dev')
 
+export function loadWindowUrl(window, relativePath) {
+    if (isDev) {
+        window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}/${relativePath}`)
+    } else {
+        window.loadURL(formatUrl({
+            pathname: path.resolve(__dirname, relativePath),
+            protocol: 'file',
+            slashes: true
+        }))
+    }
+}
+
 export function createMainWindow(onClosed) {
     const window = new BrowserWindow({
             webPreferences: {
                 nodeIntegration: true,
-                preload: path.join(app.getAppPath(), 'preload.js')
+                preload: path.join(app.getAppPath(), 'client-preload.js')
             }
         }
     )
@@ -17,15 +29,7 @@ export function createMainWindow(onClosed) {
         window.webContents.openDevTools()
     }
 
-    if (isDev) {
-        window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
-    } else {
-        window.loadURL(formatUrl({
-            pathname: path.join(__dirname, 'index.html'),
-            protocol: 'file',
-            slashes: true
-        }))
-    }
+    loadWindowUrl(window, 'index.html');
 
     window.on('closed', () => {
         if (onClosed) onClosed();
