@@ -1,14 +1,12 @@
-// 1. preload.js run in renderer process
-// 2. so it must get app through electron.remote
+// run in renderer thread!
 
+// use remote for GUI modules in renderer thread
 const electron = require('electron')
-
-console.log('electron', electron);
-console.log('electron.remote', electron.remote);
-
 const app = electron.remote.app;
-console.log('app', app);
-console.log('app path', app.getPath('exe'));
-console.log('app path', app.getAppPath());
+console.log('app getAppPath', app.getAppPath());
 
+// can access to window
 window.isDev = true;
+
+// can define constants
+window.appPath = app.getAppPath();
