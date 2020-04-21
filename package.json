@@ -1,38 +1,28 @@
 {
-  "version": "0.0.0",
-  "productName": "Electron Dock",
-  "name": "sample-app",
-  "build": {
-    "appId": "com.kvisaz.app",
-    "copyright": "Copyright © 2020 Kvisaz",
-    "directories": {
-      "output": "build"
-    },
-    "win": {
-      "target": [
-        {
-          "target": "dir"
-        }
-      ]
-    }
-  },
+  "name": "electron-playtext",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "electron-webpack dev",
-    "make": "electron-webpack",
-    "build": "yarn make && electron-builder",
-    "build:dir": "yarn build --dir -c.compression=store -c.mac.identity=null"
+    "start": "webpack && electron ./dist/index.js",
+    "build": "cross-env NODE_ENV=production USE_ELECTRON=y webpack && electron-builder --x64",
+    "build:electron": "cross-env NODE_ENV=production USE_ELECTRON=y webpack && electron-builder --x64",
+    "clean": "rimraf dist/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron-is-dev": "^1.2.0"
   },
   "devDependencies": {
-    "electron": "^8.2.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "electron": "^8.2.1",
     "electron-builder": "^22.4.1",
-    "electron-webpack": "^2.7.4",
-    "electron-webpack-ts": "^4.0.1",
-    "html-loader": "^1.1.0",
-    "typescript": "^3.8.3",
-    "webpack": "^4.42.1"
-  },
-  "dependencies": {
-    "electron-is-dev": "^1.2.0",
-    "source-map-support": "^0.5.16"
+    "cross-env": "^7.0.2",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^5.3.2",
+    "typescript": "^3.2.2",
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.0"
   }
 }

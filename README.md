@@ -1,27 +1,27 @@
-#Electron Builder
+# Electron Dock
 
-Они рекомендуют Yarn. Но проект отлично работает и в NPM
+Быстрый старт веб-приложения или HTML5-игры в Electron
 
-Больше опций в сравнении с Electron.Forge.
 
-Под капотом  - `electron-webpack`
+Особенности
+- игра запускается внутри iframe
+- игра имеет доступ к десктопным API через систему сообщений postMessage с родительским iframe
+- iframe инкапсулирует работу с файлами и т.д.
 
-Renderer.sourceDirectory can be null.
-
-- Запуск приложения
-    - [Треды](doc/Threads.md)
-    - [Preload.js](doc/Preload.md)
-
-- Файловая система
-    - [Файлы в папке приложения](doc/FilesApp.md)    
-
-- Config
-    - [Config electron-webpack.json](doc/ConfigElectronWebpack.md)
-    - [Config webpack](doc/ConfigWebpack.md)
-
-- Other
-
-    - [Hot reload](doc/Yarn.md)
-    - [Yarn](doc/HotReload.md)
-
-![](doc/img/2020-04-05-index.png)
+Как собирать
+- закинуть готовую игру 
+    - как index.html в папку `src\dock`
+    - локальные ассеты тоже закидываются в `src\dock`
+    - допускается любое количество внешних ассетов
+- поменять иконку `src\app\app.ico`
+- настроить `src\package.json`
+    - имя appId
+    - name
+    - version
+-  настроить `package.json`
+    - имя приложения
+    - версия приложения
+    - автор приложения
+    - копирайты
+- настроить electron-builder под платформу
+    - по дефолту Win64   

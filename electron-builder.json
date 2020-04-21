@@ -1,0 +1,12 @@
+{
+  "appId": "com.kvisaz.template",
+  "directories": {
+    "app": "dist",
+    "output": "build"
+  },
+  "forceCodeSigning": false,
+  "win": {
+    "icon": "src/app/app.ico",
+    "target": "dir"
+  }
+}

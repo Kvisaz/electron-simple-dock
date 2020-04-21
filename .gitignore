@@ -1,7 +1,5 @@
-.idea
 node_modules
-dist
+.idea
 build
-out
+dist
 tmp
-yarn-error.log
