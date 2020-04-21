@@ -1,6 +1,9 @@
-import {IPC_LOAD_IFRAME_CHANNEL, IPC_MESSAGE_CHANNEL, IPostMessage} from './Interfaces';
+import {APP_MESSAGES, IPC_LOAD_IFRAME_CHANNEL, IPC_MESSAGE_CHANNEL, IPostMessage} from './Interfaces';
 
-const {remote, ipcRenderer} = require('electron')
+const Mousetrap = require('mousetrap');
+
+import {remote, ipcRenderer} from 'electron';
+
 const WINDOW_ID = remote.getCurrentWindow().id;
 
 console.log('Hello from preload.TS ..');
@@ -36,6 +39,29 @@ ipcRenderer.on(IPC_MESSAGE_CHANNEL, (event, messageData: IPostMessage) => {
 })
 
 window.addEventListener('message', e => {
-    const postMessage = e.data;
-    ipcRenderer.send(IPC_MESSAGE_CHANNEL, postMessage);
+    const postMessage: IPostMessage = e.data;
+    console.log('get message from iframe ->', postMessage);
+
+    switch (postMessage.name) {
+        case APP_MESSAGES.fullScreen:
+            fullScreen(!isFullscreen())
+            break;
+        case APP_MESSAGES.devTools:
+            win().webContents.toggleDevTools()
+            break;
+        default:
+            ipcRenderer.send(IPC_MESSAGE_CHANNEL, postMessage);
+    }
 })
+
+function win() {
+    return remote.getCurrentWindow();
+}
+
+function isFullscreen() {
+    return win().isFullScreen();
+}
+
+function fullScreen(full = true) {
+    win().setFullScreen(full);
+}

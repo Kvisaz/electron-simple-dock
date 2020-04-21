@@ -3,6 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Iframe Test</title>
+    <script src="mousetrap.min.js"></script>
+    <script>
+        window.addEventListener('message', e => {
+            console.log('iframe got message', e.data.name, e.data.data);
+
+            setTimeout(() => {
+                window.parent.postMessage({
+                    name: 'fullScreen',
+                    data: null
+                }, '*')
+            }, 500)
+
+        })
+
+        Mousetrap.bind(['ctrl+f', 'command+f', 'f11'], () => {
+            window.parent.postMessage({
+                name: 'fullScreen',
+                data: null
+            }, '*')
+        });
+
+        Mousetrap.bind(['ctrl+shift+i', 'command+shift+i'], () => {
+            window.parent.postMessage({
+                name: 'devTools',
+                data: null
+            }, '*')
+        });
+    </script>
 </head>
 <body>
 <h1>Чек-лист</h1>

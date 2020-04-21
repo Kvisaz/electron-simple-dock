@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron-is-dev": "^1.2.0"
+    "@types/mousetrap": "^1.6.3",
+    "electron-is-dev": "^1.2.0",
+    "mousetrap": "^1.6.5"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.1.1",
